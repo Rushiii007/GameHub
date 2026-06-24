@@ -1,0 +1,108 @@
+.page {
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 28px;
+}
+.navbar h2 { font-size: 1.25rem; }
+.navbar .nav-sub { color: var(--text-muted); font-size: 0.9rem; }
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 32px 0 24px;
+}
+.hero h1 {
+  font-size: 2.25rem;
+  margin-bottom: 8px;
+}
+.hero p { font-size: 1rem; }
+
+/* Back button */
+.back-btn {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.back-btn:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+/* Game grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Game card */
+.game-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+}
+.game-card:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.game-card h3 { font-size: 1.05rem; }
+.game-card .desc { font-size: 0.85rem; flex: 1; }
+.game-card .meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+.game-card .tag {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.game-card .score {
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.play-btn {
+  background: var(--accent);
+  color: #0f172a;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.play-btn:hover { background: var(--accent-hover); }
+
+/* Section title */
+.section-title {
+  margin: 24px 0 12px;
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

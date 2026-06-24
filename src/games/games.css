@@ -1,0 +1,94 @@
+/* Shared styles for all games. Import once in App.jsx (or per game). */
+.game {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  color: var(--text);
+  text-align: center;
+}
+.game-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+.game-subtitle {
+  color: var(--text-muted);
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+}
+/* Stats row (score, best, level, etc.) */
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 20px;
+}
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 12px);
+  padding: 10px 16px;
+  min-width: 90px;
+}
+.stat-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 10px);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s, border-color 0.2s;
+}
+.btn:hover {
+  background: var(--bg-2);
+  border-color: var(--accent);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-1);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+}
+/* Message / status banner */
+.message {
+  display: inline-block;
+  padding: 10px 18px;
+  margin: 16px 0;
+  border-radius: var(--radius, 10px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-weight: 500;
+}
+.message.win  { border-color: #4ade80; color: #4ade80; }
+.message.lose { border-color: #f87171; color: #f87171; }
+/* Generic centered board wrapper */
+.board-wrap {
+  display: inline-block;
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius, 14px);
+}
