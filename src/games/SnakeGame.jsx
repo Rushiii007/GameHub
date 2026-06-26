@@ -4,11 +4,13 @@ import { getScore, setScore as saveScore } from "../utils/scoreStorage";
 const SCORE_KEY = "snake_high_score";
 const GRID_SIZE = 15;
 const CELL = 22;
+
 const initialSnake = () => [
   { x: 5, y: 7 },
   { x: 4, y: 7 },
   { x: 3, y: 7 },
 ];
+
 const randFood = (snake) => {
   while (true) {
     const f = {
@@ -18,6 +20,7 @@ const randFood = (snake) => {
     if (!snake.some((s) => s.x === f.x && s.y === f.y)) return f;
   }
 };
+
 function SnakeGame() {
   const [snake, setSnake] = useState(initialSnake());
   const [food, setFood] = useState(() => randFood(initialSnake()));
@@ -25,6 +28,7 @@ function SnakeGame() {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(getScore(SCORE_KEY));
+
   useEffect(() => {
     const handleKey = (e) => {
       const map = {
@@ -39,12 +43,13 @@ function SnakeGame() {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [direction]);
+
   useEffect(() => {
     if (gameOver) return;
     const interval = setInterval(moveSnake, 180);
     return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [snake, direction, gameOver]);
+
   const moveSnake = () => {
     const head = { ...snake[0] };
     if (direction === "RIGHT") head.x += 1;
@@ -62,11 +67,13 @@ function SnakeGame() {
     }
     setSnake(next);
   };
+
   const endGame = () => {
     setGameOver(true);
     saveScore(SCORE_KEY, score);
     setHighScore(getScore(SCORE_KEY));
   };
+
   const restart = () => {
     const s = initialSnake();
     setSnake(s);
@@ -75,6 +82,7 @@ function SnakeGame() {
     setGameOver(false);
     setScore(0);
   };
+
   return (
     <div className="game">
       <h1 className="game-title">Snake</h1>
@@ -131,4 +139,5 @@ function SnakeGame() {
     </div>
   );
 }
+
 export default SnakeGame;
