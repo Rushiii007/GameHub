@@ -3,7 +3,6 @@ export function getScore(key) {
   return value ? Number(value) : 0;
 }
 
-// higher is better (default)
 export function setScore(key, newScore) {
   const current = getScore(key);
 
