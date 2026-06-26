@@ -2,14 +2,14 @@ import Navbar from "../components/Navbar";
 import GameCard from "../components/GameCard";
 
 const games = [
-  { key: "tictactoe",   title: "Tic Tac Toe",        description: "Classic 3x3 strategy game.",        tag: "Strategy" },
-  { key: "memory",      title: "Memory Game",        description: "Match pairs of cards.",             tag: "Puzzle",  scoreKey: "memory_best" },
-  { key: "snake",       title: "Snake",              description: "Eat, grow, don't crash.",           tag: "Arcade",  scoreKey: "snake_best" },
-  { key: "2048",        title: "2048",               description: "Combine tiles to reach 2048.",      tag: "Puzzle",  scoreKey: "2048_best" },
-  { key: "rps",         title: "Rock Paper Scissors",description: "Beat the computer.",                tag: "Casual" },
-  { key: "connectfour", title: "Connect Four",       description: "Line up four in a row.",            tag: "Strategy" },
-  { key: "simon",       title: "Simon Game",         description: "Repeat the color sequence.",        tag: "Memory",  scoreKey: "simon_best" },
-  { key: "typing",      title: "Typing Test",        description: "Test your typing speed.",           tag: "Skill",   scoreKey: "typing_best" },
+  { key: "tictactoe",   title: "Tic Tac Toe",         description: "Classic 3x3 showdown.",        tag: "Strategy", icon: "⭕" },
+  { key: "memory",      title: "Memory Game",         description: "Find the matching pairs.",     tag: "Puzzle",   icon: "🧠", scoreKey: "memory_best" },
+  { key: "snake",       title: "Snake",               description: "Eat, grow, don't crash.",      tag: "Arcade",   icon: "🐍", scoreKey: "snake_best" },
+  { key: "2048",        title: "2048",                description: "Merge tiles up to 2048.",      tag: "Puzzle",   icon: "🔢", scoreKey: "2048_best" },
+  { key: "rps",         title: "Rock Paper Scissors", description: "Can you beat the computer?",   tag: "Casual",   icon: "✊" },
+  { key: "connectfour", title: "Connect Four",        description: "Get four in a row to win.",    tag: "Strategy", icon: "🔴" },
+  { key: "simon",       title: "Simon Game",          description: "Repeat the color sequence.",   tag: "Memory",   icon: "🎵", scoreKey: "simon_best" },
+  { key: "typing",      title: "Typing Test",         description: "How fast can you type?",        tag: "Skill",    icon: "⌨️", scoreKey: "typing_best" },
 ];
 
 export default function Home({ setGame }) {
@@ -19,7 +19,7 @@ export default function Home({ setGame }) {
 
       <div className="hero">
         <h1>Welcome to GameHub</h1>
-        <p>Pick a game and start playing</p>
+        <p>Ready to play? Pick a game below and jump right in.</p>
       </div>
 
       <h2 className="section-title">All Games</h2>
@@ -27,6 +27,7 @@ export default function Home({ setGame }) {
         {games.map((g) => (
           <GameCard
             key={g.key}
+            icon={g.icon}
             title={g.title}
             description={g.description}
             tag={g.tag}
