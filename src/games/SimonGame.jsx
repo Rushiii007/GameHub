@@ -9,6 +9,7 @@ const COLOR_HEX = {
   yellow: "#eab308",
 };
 const SCORE_KEY = "simon_best_level";
+
 export default function SimonGame() {
   const best = getScore(SCORE_KEY);
   const [sequence, setSequence] = useState([]);
@@ -17,8 +18,10 @@ export default function SimonGame() {
   const [flashColor, setFlashColor] = useState(null);
   const [message, setMessage] = useState("Press Start to begin");
   const [level, setLevel] = useState(0);
-  const [status, setStatus] = useState(""); // "win" | "lose" | ""
+  const [status, setStatus] = useState("");
+
   const randColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
+
   const startGame = () => {
     setSequence([randColor()]);
     setUserIndex(0);
@@ -27,6 +30,7 @@ export default function SimonGame() {
     setStatus("");
     setMessage("Watch carefully...");
   };
+
   useEffect(() => {
     if (!started) return;
     let i = 0;
@@ -41,6 +45,7 @@ export default function SimonGame() {
     }, 700);
     return () => clearInterval(interval);
   }, [sequence, started]);
+
   const handleClick = (color) => {
     if (!started) return;
     const current = sequence[userIndex];
@@ -64,6 +69,7 @@ export default function SimonGame() {
       setUserIndex(userIndex + 1);
     }
   };
+
   return (
     <div className="game">
       <h1 className="game-title">Simon</h1>
