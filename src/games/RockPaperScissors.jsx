@@ -3,11 +3,13 @@ import { useState } from "react";
 const CHOICES = ["rock", "paper", "scissors"];
 const ICONS = { rock: "✊", paper: "✋", scissors: "✌️" };
 const RULES = { rock: "scissors", paper: "rock", scissors: "paper" };
+
 export default function RockPaperScissors() {
   const [userScore, setUserScore] = useState(0);
   const [compScore, setCompScore] = useState(0);
   const [msg, setMsg] = useState("Pick your move");
-  const [status, setStatus] = useState(""); // "win" | "lose" | ""
+  const [status, setStatus] = useState("");
+
   const playGame = (userChoice) => {
     const compChoice = CHOICES[Math.floor(Math.random() * 3)];
     if (userChoice === compChoice) {
@@ -25,12 +27,14 @@ export default function RockPaperScissors() {
       setStatus("lose");
     }
   };
+
   const reset = () => {
     setUserScore(0);
     setCompScore(0);
     setMsg("Pick your move");
     setStatus("");
   };
+
   return (
     <div className="game">
       <h1 className="game-title">Rock Paper Scissors</h1>
