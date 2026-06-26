@@ -4,12 +4,14 @@ const ROWS = 6;
 const COLS = 7;
 const createBoard = () =>
   Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+
 export default function ConnectFour() {
   const [board, setBoard] = useState(createBoard());
-  const [player, setPlayer] = useState(1); // 1 = Red, -1 = Yellow
+  const [player, setPlayer] = useState(1);
   const [winner, setWinner] = useState(null);
   const colors = { 1: "#ef4444", "-1": "#facc15" };
   const names = { 1: "Red", "-1": "Yellow" };
+
   const dropPiece = (col) => {
     if (winner) return;
     const next = board.map((row) => [...row]);
@@ -23,6 +25,7 @@ export default function ConnectFour() {
     if (checkWin(next, player)) setWinner(player);
     else setPlayer(player * -1);
   };
+
   const checkWin = (b, p) => {
     const eq = (a, b, c, d) => a === p && b === p && c === p && d === p;
     for (let r = 0; r < ROWS; r++)
@@ -39,11 +42,13 @@ export default function ConnectFour() {
         if (eq(b[r][c], b[r - 1][c + 1], b[r - 2][c + 2], b[r - 3][c + 3])) return true;
     return false;
   };
+
   const resetGame = () => {
     setBoard(createBoard());
     setPlayer(1);
     setWinner(null);
   };
+
   return (
     <div className="game">
       <h1 className="game-title">Connect Four</h1>
