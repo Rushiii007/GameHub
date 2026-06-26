@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import './games/games.css'
+import "./games/games.css";
 import Home from "./pages/Home";
 import TicTacToe from "./games/TicTacToe";
 import MemoryGame from "./games/MemoryGame";
@@ -20,14 +20,14 @@ export default function App() {
     <div className="page">
       <button className="back-btn" onClick={() => setGame("home")}>⬅ Back to Home</button>
 
-      {game === "tictactoe"  && <TicTacToe />}
-      {game === "memory"     && <MemoryGame />}
-      {game === "snake"      && <Snake />}
-      {game === "2048"       && <Game2048 />}
-      {game === "rps"        && <RockPaperScissors />}
-      {game === "connectfour"&& <ConnectFour />}
-      {game === "simon"      && <SimonGame />}
-      {game === "typing"     && <TypingTest />}
+      {game === "tictactoe"   && <TicTacToe />}
+      {game === "memory"      && <MemoryGame />}
+      {game === "snake"       && <Snake />}
+      {game === "2048"        && <Game2048 />}
+      {game === "rps"         && <RockPaperScissors />}
+      {game === "connectfour" && <ConnectFour />}
+      {game === "simon"       && <SimonGame />}
+      {game === "typing"      && <TypingTest />}
     </div>
   );
 }
