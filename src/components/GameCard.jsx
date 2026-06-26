@@ -1,10 +1,11 @@
 import { getScore } from "../utils/scoreStorage";
 
-export default function GameCard({ title, description, tag, scoreKey, onClick }) {
+export default function GameCard({ icon, title, description, tag, scoreKey, onClick }) {
   const score = scoreKey ? getScore(scoreKey) : 0;
 
   return (
     <div className="game-card" onClick={onClick}>
+      <div className="game-icon">{icon}</div>
       <h3>{title}</h3>
       <p className="desc">{description}</p>
       <div className="meta">
