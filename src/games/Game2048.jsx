@@ -5,7 +5,7 @@ const SIZE = 4;
 const SCORE_KEY = "game_2048_best";
 const emptyBoard = () =>
   Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
-// Color palette for tiles (classic 2048-ish, theme-friendly)
+
 const TILE_COLORS = {
   0:    { bg: "var(--bg-2, #1e293b)", fg: "transparent" },
   2:    { bg: "#eee4da", fg: "#776e65" },
@@ -21,6 +21,7 @@ const TILE_COLORS = {
   2048: { bg: "#edc22e", fg: "#fff" },
 };
 const tileStyle = (v) => TILE_COLORS[v] || { bg: "#3c3a32", fg: "#fff" };
+
 function addRandom(b) {
   const empty = [];
   for (let i = 0; i < SIZE; i++)
@@ -31,12 +32,14 @@ function addRandom(b) {
   b[x][y] = Math.random() < 0.9 ? 2 : 4;
   return b;
 }
+
 const clone = (b) => b.map((r) => [...r]);
 const compress = (row) => {
   const a = row.filter((v) => v !== 0);
   while (a.length < SIZE) a.push(0);
   return a;
 };
+
 export default function Game2048() {
   const [board, setBoard] = useState(() =>
     addRandom(addRandom(emptyBoard()))
@@ -44,6 +47,7 @@ export default function Game2048() {
   const [score, setLocalScore] = useState(0);
   const [won, setWon] = useState(false);
   const bestScore = getScore(SCORE_KEY);
+
   function merge(row) {
     const r = [...row];
     for (let i = 0; i < SIZE - 1; i++) {
@@ -56,12 +60,14 @@ export default function Game2048() {
     }
     return r;
   }
+
   const moveLeft   = (b) => b.map((row) => compress(merge(compress(row))));
   const reverse    = (b) => b.map((row) => [...row].reverse());
   const transpose  = (b) => b[0].map((_, i) => b.map((row) => row[i]));
   const moveRight  = (b) => reverse(moveLeft(reverse(b)));
   const moveUp     = (b) => transpose(moveLeft(transpose(b)));
   const moveDown   = (b) => transpose(moveRight(transpose(b)));
+
   function handleMove(dir) {
     if (won) return;
     let next;
@@ -73,6 +79,7 @@ export default function Game2048() {
       setBoard(addRandom(next));
     }
   }
+
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "ArrowLeft")  handleMove("left");
@@ -82,13 +89,14 @@ export default function Game2048() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [board, won]);
+
   useEffect(() => {
     if (won || board.flat().every((x) => x !== 0)) {
       if (score > bestScore) setScore(SCORE_KEY, score);
     }
   }, [won, board, score, bestScore]);
+
   const hasEmpty = board.some((r) => r.includes(0));
   const hasMoves = () => {
     for (let i = 0; i < SIZE; i++)
@@ -100,11 +108,13 @@ export default function Game2048() {
     return false;
   };
   const gameOver = !hasEmpty && !hasMoves();
+
   function restart() {
     setBoard(addRandom(addRandom(emptyBoard())));
     setLocalScore(0);
     setWon(false);
   }
+
   return (
     <div className="game">
       <h1 className="game-title">2048</h1>
