@@ -4,7 +4,6 @@
   margin: 0 auto;
 }
 
-/* Navbar */
 .navbar {
   display: flex;
   align-items: center;
@@ -16,18 +15,20 @@
 .navbar h2 { font-size: 1.25rem; }
 .navbar .nav-sub { color: var(--text-muted); font-size: 0.9rem; }
 
-/* Hero */
 .hero {
   text-align: center;
-  padding: 32px 0 24px;
+  padding: 40px 0 28px;
 }
 .hero h1 {
-  font-size: 2.25rem;
-  margin-bottom: 8px;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--accent), #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.hero p { font-size: 1rem; }
+.hero p { font-size: 1.05rem; }
 
-/* Back button */
 .back-btn {
   background: var(--surface);
   color: var(--text);
@@ -43,14 +44,12 @@
   border-color: var(--border-strong);
 }
 
-/* Game grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
-/* Game card */
 .game-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -60,13 +59,29 @@
   flex-direction: column;
   gap: 8px;
   cursor: pointer;
-  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s, box-shadow 0.15s;
 }
 .game-card:hover {
   background: var(--surface-hover);
-  border-color: var(--border-strong);
-  transform: translateY(-2px);
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(56, 189, 248, 0.18);
 }
+
+.game-icon {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 6px;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .game-card h3 { font-size: 1.05rem; }
 .game-card .desc { font-size: 0.85rem; flex: 1; }
 .game-card .meta {
@@ -98,7 +113,6 @@
 }
 .play-btn:hover { background: var(--accent-hover); }
 
-/* Section title */
 .section-title {
   margin: 24px 0 12px;
   font-size: 1rem;
