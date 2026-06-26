@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
-
 import "./MemoryGame.css";
+
 const VALUES = ["🍎", "🍊", "🍇", "🍓", "🍌", "🥝", "🍒", "🍍"];
+
 function buildDeck() {
-  // 8 pairs = 16 cards. Take first 8 emoji, duplicate, shuffle.
   const pairs = VALUES.flatMap((v, i) => [
     { id: i * 2,     value: v, flipped: false, matched: false },
     { id: i * 2 + 1, value: v, flipped: false, matched: false },
   ]);
   return pairs.sort(() => Math.random() - 0.5);
 }
+
 function MemoryGame() {
   const [cards, setCards] = useState(buildDeck);
   const [firstCard, setFirstCard] = useState(null);
@@ -17,6 +18,7 @@ function MemoryGame() {
   const [lockBoard, setLockBoard] = useState(false);
   const [moves, setMoves] = useState(0);
   const [won, setWon] = useState(false);
+
   function handleClick(id) {
     if (lockBoard || won) return;
     const clicked = cards.find((c) => c.id === id);
@@ -30,6 +32,7 @@ function MemoryGame() {
       setSecondCard(clicked);
     }
   }
+
   useEffect(() => {
     if (!firstCard || !secondCard) return;
     setLockBoard(true);
@@ -53,16 +56,18 @@ function MemoryGame() {
         reset();
       }, 800);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [secondCard]);
+
   function reset() {
     setFirstCard(null);
     setSecondCard(null);
     setLockBoard(false);
   }
+
   useEffect(() => {
     if (cards.every((c) => c.matched)) setWon(true);
   }, [cards]);
+
   function restartGame() {
     setCards(buildDeck());
     setFirstCard(null);
@@ -71,6 +76,7 @@ function MemoryGame() {
     setMoves(0);
     setWon(false);
   }
+
   return (
     <div className="game">
       <h1 className="game-title">Memory Game</h1>
@@ -106,4 +112,5 @@ function MemoryGame() {
     </div>
   );
 }
+
 export default MemoryGame;
