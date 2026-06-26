@@ -2,7 +2,7 @@
 
 A collection of classic browser games built with React and Vite. Single-page app with a shared design system, persistent high scores, and a responsive layout.
 
-**Live demo:** https://gamehub007-three.vercel.app/
+**Live demo:** https://game-hub-umber-one.vercel.app/
 
 ![GameHub screenshot](./screenshot.png)
 
