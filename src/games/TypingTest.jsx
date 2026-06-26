@@ -10,6 +10,7 @@ const SENTENCES = [
   "clean code is easier to maintain",
   "small components keep things simple",
 ];
+
 export default function TypingTest() {
   const [text, setText] = useState("");
   const [target, setTarget] = useState("");
@@ -18,18 +19,22 @@ export default function TypingTest() {
   const [finished, setFinished] = useState(false);
   const [bestWPM, setBestWPM] = useState(getScore("typing_best_wpm"));
   const intervalRef = useRef(null);
+
   useEffect(() => {
     setTarget(SENTENCES[Math.floor(Math.random() * SENTENCES.length)]);
   }, []);
+
   useEffect(() => {
     if (!started) return;
     intervalRef.current = setInterval(() => setTime((t) => t + 1), 1000);
     return () => clearInterval(intervalRef.current);
   }, [started]);
+
   const wpm = () => {
     const words = text.trim().split(/\s+/).filter(Boolean).length;
     return time === 0 ? 0 : Math.round((words / time) * 60);
   };
+
   const accuracy = () => {
     if (!target || !text) return 0;
     let correct = 0;
@@ -38,6 +43,7 @@ export default function TypingTest() {
     }
     return Math.round((correct / target.length) * 100);
   };
+
   const handleChange = (e) => {
     const val = e.target.value;
     if (!started && val.length === 1) setStarted(true);
@@ -54,10 +60,12 @@ export default function TypingTest() {
       clearInterval(intervalRef.current);
     }
   };
+
   const wpmFromVal = (val) => {
     const words = val.trim().split(/\s+/).filter(Boolean).length;
     return time === 0 ? 0 : Math.round((words / time) * 60);
   };
+
   const reset = () => {
     setText("");
     setTime(0);
@@ -66,6 +74,7 @@ export default function TypingTest() {
     clearInterval(intervalRef.current);
     setTarget(SENTENCES[Math.floor(Math.random() * SENTENCES.length)]);
   };
+
   return (
     <div className="game">
       <h1 className="game-title">Typing Speed Test</h1>
@@ -84,7 +93,6 @@ export default function TypingTest() {
           <span className="stat-value">{bestWPM}</span>
         </div>
       </div>
-      {/* Target with per-character highlight */}
       <div
         style={{
           maxWidth: 600,
